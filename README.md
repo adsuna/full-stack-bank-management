@@ -1,5 +1,3 @@
-# Modern Banking Application
-
 A full-stack banking application with features like account management, transactions, investments, loans, and a customer review system.
 
 ## Features
