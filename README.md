@@ -37,6 +37,16 @@ A full-stack banking application with features like account management, transact
 - MongoDB Atlas account
 - npm or yarn
 
+Note: This application was developed and tested on Linux. While it should work on other operating systems, you may need to adjust some commands accordingly.
+
+### System Requirements
+
+#### Minimum Requirements
+- CPU: Dual-core processor (2.0 GHz or higher)
+- RAM: 4GB
+- Storage: 1GB free space
+- Internet connection: Broadband (1 Mbps or higher)
+
 ### Database Setup
 
 1. Create a MySQL database named 'bankingsystem'
