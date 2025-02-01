@@ -45,26 +45,22 @@ A full-stack banking application with features like account management, transact
 ### Backend Setup
 
 1. Navigate to backend directory:
-
 ```bash
 cd banking-backend
 ```
 
 2. Install dependencies:
-
 ```bash
 npm install
 ```
 
 3. Create a `.env` file with the following variables:
-
 ```env
 MONGODB_URI=your_mongodb_atlas_uri
 JWT_SECRET=your_jwt_secret
 ```
 
 4. Update MySQL connection in `server.js`:
-
 ```javascript
 const db = mysql.createConnection({
   host: "localhost",
@@ -74,11 +70,31 @@ const db = mysql.createConnection({
 })
 ```
 
-5. Start the backend server:
-
+5. Install nodemon globally (optional, for development):
 ```bash
-npm start
+npm install -g nodemon
 ```
+
+6. Start the backend server:
+
+For development (with auto-reload):
+```bash
+nodemon server.js
+```
+
+Or for production:
+```bash
+node server.js
+```
+
+The backend server will run on `http://localhost:5000`
+
+Note: Make sure your MySQL server is running and the database is created before starting the backend server.
+
+7. Verify the server is running by checking:
+- MySQL connection success message
+- MongoDB Atlas connection success message
+- Server running message on port 5000
 
 ### Frontend Setup
 
