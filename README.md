@@ -9,7 +9,7 @@ A full-stack banking application with features like account management, transact
 - 💸 Money transfers
 - 📊 Investment portfolio
 - 💰 Loan applications
-- 💬 AI-powered chatbot assistant
+- 💬 Chatbot assistant
 - ⭐ Customer reviews
 - 📱 Responsive design
 
