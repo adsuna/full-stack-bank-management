@@ -37,16 +37,6 @@ db.connect((err) => {
   }
 })
 
-// Update the MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log("Connected to MongoDB Atlas");
-}).catch((error) => {
-  console.error("MongoDB Atlas connection error:", error);
-});
-
 // Create Review Schema
 const reviewSchema = new mongoose.Schema({
   name: String,
