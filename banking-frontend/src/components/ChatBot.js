@@ -4,7 +4,6 @@ import {
   Paper,
   IconButton,
   Typography,
-  TextField,
   List,
   ListItem,
   Button,
@@ -15,7 +14,6 @@ import {
 import {
   Chat as ChatIcon,
   Close as CloseIcon,
-  Send as SendIcon,
   SmartToy as BotIcon,
   AccountBalance as AccountIcon,
   Payments as PaymentsIcon,
@@ -29,11 +27,10 @@ function ChatBot() {
   const [messages, setMessages] = useState([
     { text: "Hi! I'm your banking assistant. How can I help you today?", isBot: true, showOptions: true }
   ]);
-  const [input, setInput] = useState('');
 
   const options = [
-    { 
-      text: 'Account Information', 
+    {
+      text: 'Account Information',
       icon: <AccountIcon fontSize="small" />,
       responses: [
         'Check balance',
@@ -41,8 +38,8 @@ function ChatBot() {
         'Account types'
       ]
     },
-    { 
-      text: 'Transactions', 
+    {
+      text: 'Transactions',
       icon: <PaymentsIcon fontSize="small" />,
       responses: [
         'Recent transactions',
@@ -50,8 +47,8 @@ function ChatBot() {
         'Payment methods'
       ]
     },
-    { 
-      text: 'Loans', 
+    {
+      text: 'Loans',
       icon: <LoanIcon fontSize="small" />,
       responses: [
         'Loan types',
@@ -59,8 +56,8 @@ function ChatBot() {
         'Application process'
       ]
     },
-    { 
-      text: 'Investments', 
+    {
+      text: 'Investments',
       icon: <InvestIcon fontSize="small" />,
       responses: [
         'Investment options',
@@ -71,10 +68,8 @@ function ChatBot() {
   ];
 
   const handleOptionClick = (option) => {
-    // Add user's selection to messages
     setMessages(prev => [...prev, { text: option.text, isBot: false }]);
 
-    // Show sub-options
     setTimeout(() => {
       setMessages(prev => [
         ...prev,
@@ -88,10 +83,8 @@ function ChatBot() {
   };
 
   const handleSubOptionClick = (text) => {
-    // Add user's selection to messages
     setMessages(prev => [...prev, { text, isBot: false }]);
 
-    // Get bot response
     setTimeout(() => {
       const response = getBotResponse(text);
       setMessages(prev => [...prev, { text: response, isBot: true, showOptions: true }]);
@@ -100,8 +93,7 @@ function ChatBot() {
 
   const getBotResponse = (text) => {
     const input = text.toLowerCase();
-    
-    // Specific responses for each sub-option
+
     const responses = {
       'check balance': "You can check your balance in the Accounts section. Each account will show its current balance and recent transactions.",
       'transfer money': "To transfer money, go to the Accounts section and click the 'Transfer' button on any account card.",
@@ -120,17 +112,6 @@ function ChatBot() {
     return responses[input.toLowerCase()] || "I'm not sure about that. Please select one of the available options.";
   };
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    setMessages(prev => [...prev, { text: input, isBot: false }]);
-    setTimeout(() => {
-      const botResponse = getBotResponse(input);
-      setMessages(prev => [...prev, { text: botResponse, isBot: true, showOptions: true }]);
-    }, 500);
-    setInput('');
-  };
-
-  // Scroll to bottom when messages change
   useEffect(() => {
     const messageList = document.getElementById('message-list');
     if (messageList) {
@@ -175,8 +156,8 @@ function ChatBot() {
               >
                 <BotIcon />
                 <Typography variant="h6">Banking Assistant</Typography>
-                <IconButton 
-                  size="small" 
+                <IconButton
+                  size="small"
                   sx={{ ml: 'auto', color: 'white' }}
                   onClick={() => setIsOpen(false)}
                 >
@@ -220,8 +201,8 @@ function ChatBot() {
                     >
                       {message.isBot && (
                         <Avatar
-                          sx={{ 
-                            width: 24, 
+                          sx={{
+                            width: 24,
                             height: 24,
                             background: 'linear-gradient(45deg, #2563eb, #7c3aed)'
                           }}
@@ -246,7 +227,7 @@ function ChatBot() {
                             size="small"
                             startIcon={option.icon}
                             onClick={() => handleOptionClick(option)}
-                            sx={{ 
+                            sx={{
                               justifyContent: 'flex-start',
                               borderColor: 'rgba(0,0,0,0.1)',
                               '&:hover': {
@@ -274,7 +255,7 @@ function ChatBot() {
                             variant="text"
                             size="small"
                             onClick={() => handleSubOptionClick(subOption)}
-                            sx={{ 
+                            sx={{
                               justifyContent: 'flex-start',
                               color: 'text.secondary',
                               '&:hover': {
@@ -290,25 +271,6 @@ function ChatBot() {
                   </ListItem>
                 ))}
               </List>
-
-              {/* Input */}
-              <Box sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
-                <TextField
-                  fullWidth
-                  size="small"
-                  placeholder="Type a message..."
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                  InputProps={{
-                    endAdornment: (
-                      <IconButton onClick={handleSend}>
-                        <SendIcon />
-                      </IconButton>
-                    ),
-                  }}
-                />
-              </Box>
             </Paper>
           </motion.div>
         )}
@@ -330,4 +292,4 @@ function ChatBot() {
   );
 }
 
-export default ChatBot; 
+export default ChatBot;
