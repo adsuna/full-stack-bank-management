@@ -1,5 +1,10 @@
 require('dotenv').config();
 
+if (!process.env.JWT_SECRET || !process.env.MONGODB_URI || !process.env.MYSQL_PASSWORD) {
+  console.error("Missing required environment variables.");
+  process.exit(1);
+}
+
 const express = require("express")
 const mysql = require("mysql2")
 const cors = require("cors")
@@ -18,10 +23,10 @@ app.use(express.json())
 
 // MySQL Connection
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "bankingsystem",
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 })
 
 db.connect((err) => {

@@ -1,3 +1,5 @@
+# Modern Banking Application
+
 A full-stack banking application with features like account management, transactions, investments, loans, and a customer review system.
 
 ## Features
@@ -66,24 +68,18 @@ npm install
 ```env
 MONGODB_URI=your_mongodb_atlas_uri
 JWT_SECRET=your_jwt_secret
+MYSQL_HOST=localhost
+MYSQL_USER=your_mysql_username
+MYSQL_PASSWORD=your_mysql_password
+MYSQL_DATABASE=bankingsystem
 ```
 
-4. Update MySQL connection in `server.js`:
-```javascript
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "your_username",
-  password: "your_password",
-  database: "bankingsystem",
-})
-```
-
-5. Install nodemon globally (optional, for development):
+4. Install nodemon globally (optional, for development):
 ```bash
 npm install -g nodemon
 ```
 
-6. Start the backend server:
+5. Start the backend server:
 
 For development (with auto-reload):
 ```bash
@@ -99,7 +95,7 @@ The backend server will run on `http://localhost:5000`
 
 Note: Make sure your MySQL server is running and the database is created before starting the backend server.
 
-7. Verify the server is running by checking:
+6. Verify the server is running by checking:
 - MySQL connection success message
 - MongoDB Atlas connection success message
 - Server running message on port 5000
